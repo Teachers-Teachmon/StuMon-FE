@@ -4,23 +4,6 @@ import dayjs from 'dayjs';
 const hour = new Date().getHours();
 const minute = new Date().getMinutes();
 
-interface DayState {
- today: string;
- day: string;
- start: string;
- end: string;
- select: boolean;          // boolean으로 선언되어야 할 것 같아요 (원래 string인데 setSelect 타입이 string이면 string으로 하셔야 합니다)
- recordDay: string;
- period: string;
-
- setDay: (newDay: string) => void;
- setStart: (newStart: string) => void;
- setEnd: (newEnd: string) => void;
- setSelect: (newSelect: boolean) => void;  // select가 boolean이라면 boolean 타입으로 변경
- setRecordDay: (newRecordDay: string) => void;
- updatePeriod: () => void;
-}
-
 const changeClass = () =>{
  const time = hour * 60 + minute;
  if(time >= 0 && time <= 16 * 60 + 9) return "7교시";
@@ -28,7 +11,7 @@ const changeClass = () =>{
  else if(time >= 18*60 + 10 && time <= 24*60) return "10~11교시";
 }
 
-const useDay = create<DayState>((set) => ({
+const useDay = create((set) => ({
  today: dayjs().format('YYYY-MM-DD dddd'),
  day:'',
  start:'',
@@ -36,11 +19,11 @@ const useDay = create<DayState>((set) => ({
  select:false,
  recordDay : '',
  period : "7교시",
- setDay:(newDay)=>set({day : newDay}),
- setStart:(newStart)=>set({start : newStart}),
- setEnd:(newEnd )=>set({end : newEnd}),
- setSelect:(newSelect )=>set({select : newSelect}),
- setRecordDay:(newRecordDay )=>set({recordDay : newRecordDay}),
+ setDay:(newDay : string)=>set({day : newDay}),
+ setStart:(newStart: string)=>set({start : newStart}),
+ setEnd:(newEnd : string)=>set({end : newEnd}),
+ setSelect:(newSelect  : string)=>set({select : newSelect}),
+ setRecordDay:(newRecordDay : string)=>set({recordDay : newRecordDay}),
  updatePeriod: () => set({ period: changeClass() })
 }));
 

@@ -29,7 +29,7 @@ export default function StudentForm() {
   const location = useLocation();
   const { place, time } = location.state;
   const {day} = useDay();
-  console.log(place, day, time, setStudent);
+  console.log(place, day, time);
   return (
     <S.TimeContainer>
       <S.ImgBox onClick={handleBack}>

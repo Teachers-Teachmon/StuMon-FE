@@ -13,14 +13,14 @@ import type {LeaveEntry} from "../../../../pages/leave-seat";
 
 function CircleBtn({name, On, status}: {name : string,On: Function; status: boolean}) {
   return(
-    <S.CircleContainer onClick={()=>On} $status = {status}>
+    <S.CircleContainer onClick={On} $status = {status}>
       <S.Name>{name}</S.Name>
     </S.CircleContainer>
   )
 }
 function SquareBtn({name, On, status} : {name : string,On: Function; status: boolean}) {
   return(
-    <S.SquareContainer onClick={()=>On} $status = {status}>
+    <S.SquareContainer onClick={On} $status = {status}>
       <S.Name>{name}</S.Name>
     </S.SquareContainer>
   )

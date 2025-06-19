@@ -14,9 +14,9 @@ export default function DateInput() {
    setDay(patchDay(today));
  }, []);
 
- const handleDateChange = (e : React.ChangeEvent<HTMLInputElement> ) => {
+ const handleDateChange = (e) => {
   const inputDate = new Date(e.target.value);
-  if (!isNaN(inputDate.getTime())) {
+  if (!isNaN(inputDate)) {
    const formattedDate = `${inputDate.getFullYear()}년 ${
      String(inputDate.getMonth() + 1).padStart(2, '0')
    }월 ${
@@ -39,13 +39,7 @@ export default function DateInput() {
        placeholder=""
        onFocus={() => setIsFocused(true)}
        onBlur={() => setIsFocused(false)}
-       onClick={(e) => {
-        const target = e.target as HTMLElement;
-        const next = target.nextSibling as HTMLElement | null;
-        if (next && 'showPicker' in next && typeof (next as any).showPicker === 'function') {
-         (next as any).showPicker();
-        }
-       }}
+       onClick={(e) => e.target.nextSibling.showPicker()}
      />
      <S.HiddenDateInput
        type="date"

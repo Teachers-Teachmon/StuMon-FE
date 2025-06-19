@@ -9,7 +9,7 @@ export const DateInputContainer = styled.div`
     padding-top: 0.4rem;
 `;
 
-export const InputWrapper = styled.div<{ $isFocused: boolean | string }>`
+export const InputWrapper = styled.div<{ $isFocused: boolean }>`
     position: relative;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@ export const InputWrapper = styled.div<{ $isFocused: boolean | string }>`
     padding-top: 1rem;
 `;
 
-export const Label = styled.label<{ $isFocused: boolean | string}>`
+export const Label = styled.label<{ $isFocused: boolean }>`
     position: absolute;
     top: ${({ $isFocused }) => ($isFocused ? '0px' : '24px')};
     left: 10px;
